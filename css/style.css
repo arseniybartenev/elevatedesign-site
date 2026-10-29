@@ -456,3 +456,7 @@ body::after{background:radial-gradient(60vw 50vh at 88% 4%,rgba(150,190,215,.30)
 .vnav:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
 .vnav.prev{left:10px}.vnav.next{right:10px}
 .vcount{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.legal-note{padding:16px 20px;border-radius:18px;background:rgba(255,236,170,.55);border:1px solid rgba(180,140,20,.25);font-size:15px;margin:0 0 28px}
+mark.ph{background:rgba(255,222,110,.7);color:var(--fg);padding:0 4px;border-radius:4px}
+.legal h1{font-size:clamp(28px,4vw,46px)}.legal p{font-size:17px}.legal h2{font-size:clamp(20px,2.4vw,26px)}
