@@ -2,7 +2,7 @@
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<title>Расчёт стоимости проекта</title>
+<title>Подобрать комплект и оставить заявку</title>
 <meta name="description" content="Калькулятор стоимости дизайн-проекта квартиры по площади и комплекту. Заявка в Telegram или на почту.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&family=Onest:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="css/style.css">
@@ -15,29 +15,36 @@
  <div class="menu"><a href="uslugi.html">Услуги</a><a href="portfolio.html">Портфолио</a><a href="kak-rabotaem.html">Как работаю</a><a href="blog/">Блог</a><a href="obo-mne.html">Обо мне</a><a href="faq.html">Вопросы</a><a href="kontakty.html">Контакты</a></div>
 </div></div>
 <main class="w">
-<section class="page-hero"><span class="eyebrow">Расчёт</span><h1>Сколько будет стоить ваш проект</h1><p class="sub">Укажите площадь и выберите комплект. Итог ориентировочный, точную сумму назову после разговора.</p></section><section class="sec" style="padding-top:24px"><form class="calc-wrap rv" onsubmit="return false">
- <div class="glass"><div class="lab"><span>Площадь квартиры</span><b class="avw"><span class="av">60</span> м²</b></div>
-  <input class="ar" type="range" min="20" max="200" value="60" aria-label="Площадь, м²">
-  <div class="lab" style="margin-top:24px"><span>Комплект</span></div>
-  <div class="seg"><input type="radio" name="t2" id="t2a" value="499"><label for="t2a">Базовый</label><input type="radio" name="t2" id="t2b" value="899" checked><label for="t2b">Подробный</label><input type="radio" name="t2" id="t2c" value="1999"><label for="t2c">Индивидуальный</label></div>
-  <p class="hint">Цена за квадратный метр по выбранному комплекту. Точную сумму назову после разговора и плана квартиры.</p>
- </div>
- <div class="glass res"><div class="lab"><span>Ориентировочно</span></div><div class="tot">от 53 940 ₽</div><ul class="ln"><li></li><li></li><li></li></ul><p class="hint">Заполните заявку ниже, и я отвечу в течение дня.</p></div>
-</form></section>
-<section class="sec" style="padding-top:0"><div class="pane rv" style="max-width:760px"><h2>Оставить заявку</h2>
-<form id="lead" onsubmit="return false">
- <div class="field"><label for="name">Имя</label><input id="name" name="name" type="text" autocomplete="name" required></div>
- <div class="field"><label for="contact">Телефон или Telegram</label><input id="contact" name="contact" type="text" required></div>
- <div class="field"><label for="msg">Что нужно (необязательно)</label><textarea id="msg" name="msg" placeholder="Когда планируете ремонт, есть ли план квартиры, пожелания"></textarea></div>
- <div class="btns"><button class="btn" type="button" id="send-tg">Написать в Telegram</button><button class="btn g" type="button" id="send-mail">Отправить на почту</button></div>
- <div class="toast" id="toast" role="status"></div>
-</form>
-<p style="margin-top:20px;font-size:14px">Отправляя заявку, вы соглашаетесь с <a href="politika.html" style="color:var(--or)">политикой обработки данных</a>. Кнопка Telegram копирует текст заявки и открывает чат, вставьте его в сообщение. Кнопка почты открывает письмо с готовым текстом.</p></div></section></main>
+<section class="page-hero"><span class="eyebrow">Заявка</span><h1>Подберите комплект и оставьте заявку</h1><p class="sub">Выберите площадь и комплект, цена и состав комплекта считаются сразу. Площадь и комплект уйдут вместе с контактами.</p></section>
+<section class="sec" style="padding-top:12px"><div class="cfg rv">
+ <div class="cfg-a glass step"><div class="sh"><i>1</i><h2>Площадь квартиры</h2></div>
+  <div class="area"><b class="avw"><span class="av">60</span><small>м²</small></b>
+   <div class="chips-a" role="group" aria-label="Быстрый выбор площади"><button type="button" data-area="40">40</button><button type="button" data-area="60">60</button><button type="button" data-area="75">75</button><button type="button" data-area="100">100</button><button type="button" data-area="140">140</button></div></div>
+  <input class="ar" type="range" min="20" max="200" value="60" aria-label="Площадь, м²"><div class="rng"><span>20</span><span>200</span></div></div>
+ <div class="cfg-b glass step"><div class="sh"><i>2</i><h2>Комплект</h2></div>
+  <div class="opts">
+   <input type="radio" name="t4" id="t4a" value="499"><label for="t4a"><em>Базовый</em><strong>499 <small>₽/м²</small></strong><span>Для тех, кто сам ведёт ремонт и хочет чертежи для бригады</span></label>
+   <input type="radio" name="t4" id="t4b" value="899" checked><label for="t4b"><b class="bdg">Чаще берут</b><em>Подробный</em><strong>899 <small>₽/м²</small></strong><span>Полный проект, по которому можно считать смету</span></label>
+   <input type="radio" name="t4" id="t4c" value="1999"><label for="t4c"><em>Индивидуальный</em><strong>1999 <small>₽/м²</small></strong><span>Для тех, кто хочет увидеть результат до ремонта</span></label>
+  </div></div>
+ <aside class="cfg-s" aria-live="polite"><div class="lab"><span>Ориентировочно</span></div><div class="tot">от 53 940 ₽</div><ul class="ln"><li></li><li></li><li></li></ul>
+  <div class="lab"><span>Что входит</span></div><ul class="incl"></ul><p class="note">Точную сумму назову после разговора и плана квартиры.</p></aside>
+ <div class="cfg-c glass step"><div class="sh"><i>3</i><h2>Контакты</h2></div>
+  <form class="lead" onsubmit="return false">
+   <div class="row2"><div class="field"><label for="name">Имя</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+   <div class="field"><label for="contact">Телефон или Telegram</label><input id="contact" name="contact" type="text" required></div></div>
+   <div class="field"><label for="msg">Что нужно (необязательно)</label><textarea id="msg" name="msg" placeholder="Когда планируете ремонт, есть ли план квартиры, пожелания"></textarea></div>
+   <div class="btns"><button class="btn send-tg" type="button">Написать в Telegram</button><button class="btn g send-mail" type="button">Отправить на почту</button></div>
+   <div class="toast" role="status"></div>
+   <p class="fine2">Отправляя заявку, вы соглашаетесь с <a href="politika.html">политикой обработки данных</a>. Кнопка Telegram копирует текст заявки и открывает чат, вставьте его в сообщение. Кнопка почты открывает письмо с готовым текстом.</p>
+  </form></div>
+</div></section>
+</main>
 <footer class="foot"><div class="w">
  <div class="foot-g">
-  <div><img src="img/logo.png" alt="Elevate Design" style="height:34px;margin-bottom:14px"><p style="color:var(--mut);max-width:34ch">Дизайн-проекты квартир в Москве. Самозанятый, работаю по договору, чек выдаю.</p></div>
+  <div><img src="img/logo.png" alt="Elevate Design" style="height:28px;margin:0"></div>
   <div><a href="tel:+79684591305">8 968 459-13-05</a><a href="https://t.me/elevatedesign?direct" target="_blank" rel="noopener">Telegram: личные сообщения</a><a href="https://t.me/elevatedesign" target="_blank" rel="noopener">Telegram-канал</a><a href="mailto:arsenybartenev@yandex.ru">arsenybartenev@yandex.ru</a></div>
-  <div><a href="uslugi.html">Услуги и тарифы</a><a href="portfolio.html">Портфолио</a><a href="raschet.html">Расчёт стоимости</a><a href="blog/">Блог</a><a href="faq.html">Вопросы</a><a href="kontakty.html">Контакты</a><a href="oferta.html">Договор-оферта</a><a href="politika.html">Политика данных</a></div>
+  <div><a href="uslugi.html">Услуги и тарифы</a><a href="portfolio.html">Портфолио</a><a href="raschet.html">Подобрать комплект</a><a href="blog/">Блог</a><a href="faq.html">Вопросы</a><a href="kontakty.html">Контакты</a><a href="oferta.html">Договор-оферта</a><a href="politika.html">Политика данных</a></div>
  </div>
  <div class="fine" style="color:var(--mut)">© 2026 Elevate Design · Москва</div>
 </div></footer>
