@@ -103,4 +103,52 @@
     sc.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){nx.click();e.preventDefault()}if(e.key==='ArrowLeft'){pv.click();e.preventDefault()}});
     sync();
   });
+
+  // mobile-v3: меню на весь экран (шапка, контакты, блокировка прокрутки)
+  (function(){
+    var mn=$('.menu');if(!mn||!pill||!bb)return;
+    var head=d.createElement('div');head.className='mhead';head.innerHTML='<span></span><button class="mclose" type="button" aria-label="Закрыть меню">×</button>';
+    mn.insertBefore(head,mn.firstChild);
+    var foot=d.createElement('div');foot.className='mfoot';foot.innerHTML='<small>Отвечаю в течение дня</small><a class="btn" href="https://t.me/elevatedesign?direct" target="_blank" rel="noopener">Написать в Telegram</a><a class="tel" href="tel:+79684591305">8 968 459-13-05</a>';
+    mn.appendChild(foot);
+    var sync=function(){d.documentElement.classList.toggle('menu-open',pill.classList.contains('open'))};
+    new MutationObserver(sync).observe(pill,{attributes:true,attributeFilter:['class']});
+    $('.mclose',mn).addEventListener('click',function(){pill.classList.remove('open');bb.setAttribute('aria-expanded','false')});
+    $$('a',mn).forEach(function(a){a.addEventListener('click',function(){pill.classList.remove('open')})});
+  })();
+  // mobile-v3: расчёт по шагам на телефоне
+  $$('.cfg').forEach(function(cfg){
+    var mq=matchMedia('(max-width:760px)'),A=$('.cfg-a',cfg),B=$('.cfg-b',cfg),C=$('.cfg-c',cfg);
+    if(!A||!B||!C)return;
+    var top=d.createElement('div');top.className='wz-top';top.innerHTML='<div class="wz-bar"><i></i><i></i><i></i></div><div class="wz-t"></div>';
+    var nav=d.createElement('div');nav.className='wz-nav';nav.innerHTML='<div class="wz-s"><span>Ориентировочно</span><b></b></div><button class="wz-back" type="button" aria-label="Назад">‹</button><button class="wz-next" type="button">Дальше</button>';
+    cfg.insertBefore(top,cfg.firstChild);d.body.appendChild(nav);
+    var step=1,tot=$('.cfg-s .tot',cfg),sum=$('b',nav),back=$('.wz-back',nav),next=$('.wz-next',nav);
+    var refresh=function(){sum.textContent=tot.textContent};
+    var show=function(n,scroll){
+      step=n;cfg.setAttribute('data-step',n);
+      $$('.wz-bar i',top).forEach(function(i,j){i.classList.toggle('on',j<n)});
+      $('.wz-t',top).textContent='Шаг '+n+' из 3';
+      back.style.visibility=n===1?'hidden':'visible';
+      next.style.display=n===3?'none':'';
+      refresh();
+      if(scroll)top.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    };
+    ['input','change','click'].forEach(function(ev){cfg.addEventListener(ev,function(){setTimeout(refresh,0)})});
+    next.addEventListener('click',function(){if(step<3)show(step+1,true)});
+    back.addEventListener('click',function(){if(step>1)show(step-1,true)});
+    var apply=function(){var on=mq.matches;cfg.classList.toggle('wz',on);d.body.classList.toggle('wz-on',on&&cfg.offsetParent!==null);if(on)show(step,false)};
+    window.addEventListener('hashchange',function(){setTimeout(apply,60)});
+    if(mq.addEventListener)mq.addEventListener('change',apply);else mq.addListener(apply);
+    apply();
+  });
+
+  // mobile-v3.1: шапка получает фон после прокрутки
+  (function(){var nv=$('.nav');if(!nv)return;var last=0,tk=false;
+    var f=function(){tk=false;var y=window.scrollY||d.documentElement.scrollTop;
+      nv.classList.toggle('scrolled',y>8);
+      if(y<=8||y<last-6){nv.classList.remove('hide')}
+      else if(y>90&&y>last+6&&!d.documentElement.classList.contains('menu-open')){nv.classList.add('hide')}
+      last=y};
+    addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(f)}},{passive:true});f()})();
 })();
