@@ -779,3 +779,9 @@ mark.ph{background:rgba(255,222,110,.7);color:var(--fg);padding:0 4px;border-rad
  .bento .c-c p{color:rgba(255,255,255,.9);font-size:14px;line-height:1.35;margin:0}
  .bento .c-c .in::after{content:"";margin-top:auto;height:34px;background:radial-gradient(circle,rgba(255,255,255,.85) 3.2px,transparent 3.8px) 0 0/calc(100%/7) 17px repeat}
 }
+
+/* mobile-v3.4: меню на весь экран ломалось из-за blur/transform у .nav (они делают родителем для fixed) */
+@media (max-width:760px){
+ html.menu-open .nav{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;transform:none!important;transition:none;background:transparent;box-shadow:none}
+ html.menu-open .nav .pill{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+}
